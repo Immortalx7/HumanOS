@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body {
+    display:flex;
+    height:100vh;
+}
+.sidebar{
+    width:220px;
+    padding:20px;
+    border-right:1px solid #ddd;
+
+}
+.sidebar h1{
+    margin-bottom:20px;
+
+}
+
+.sidebar ul{
+    list-style:none;
+
+}
+.sidebar li{
+    margin-bottom:15px;
+    cursor:pointer;
+}
+.main-content{
+    flex:1;
+    padding:30px;
+}
+
+.main-content section{
+    display:none;
+}
+
+#dashboard{
+    display:block;
+    
+}

@@ -1,0 +1,62 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            HumanOS
+        </title>
+        <meta name="viewport" content="width =device-width,inital-scale=1.0">
+
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+
+        <nav class="sidebar">
+            <h1>HumanOS</h1>
+            <ul>
+                <li data-target="dashboard">Dashboard</li>
+                <li data-target="habits">Habits</li>
+                <li data-target="learning">Learning</li>
+                <li data-target="journal">Journal</li>
+                <li data-target="analytics">Analytics</li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section id="dashboard">
+                <h2>Dashboard</h2>
+                <p>Your System Overview.</p>
+            </section>
+
+            <section id="habits">
+                <h2>Habits</h2>
+
+                <div class="habit-input">
+                    <input type="text" id="habitName" placeholder="Enter a habit">
+                    <button id="addHabitBtn">Add Habit</button>
+                </div>
+                <ul id="habitList"></ul>
+                
+            </section>
+
+            <section id="learning">
+                <h2>Learning</h2>
+                <p>Montior your learning progress.</p>
+            </section>
+
+            <section id="journal">
+                <h2>Journal</h2>
+                <p>Write and reflect your thoughts.</p>
+            </section>
+
+            <section id="analytics">
+                <h2>Analytics</h2>
+                <p>Visualize your growth.</p>
+            </section>
+        </main>
+
+        <script src="js/app.js"></script>
+
+    </body>
+</html>
