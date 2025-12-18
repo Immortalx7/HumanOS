@@ -42,6 +42,13 @@ document.addEventListener("DOMContentLoaded",()=>{
     const habitInput = document.getElementById("habitName");
     const addHabitBtn = document.getElementById("addHabitBtn");
     const habitList = document.getElementById("habitList");
+
+    //enter to add
+    habitInput.addEventListener("keydown",(e)=>{
+        if(e.key==="Enter"){
+            addHabitBtn.click();
+        }
+    });
     //load habuts from local storage
     let habits=JSON.parse(localStorage.getItem("habits"))||[];
 
@@ -75,6 +82,29 @@ document.addEventListener("DOMContentLoaded",()=>{
                 span.style.textDecoration="line-through";
                 span.style.opacity="0.6";
             }
+
+            //edit habits
+            span.addEventListener("click",()=>{
+                const input=document.createElement("input");
+                input.type="text";
+                input.value=habit.text;
+                //replace span with input
+                li.replaceChild(input,span);
+                input.focus();
+
+                //save on enter
+                input.addEventListener("keydown",(e)=>{
+                    if(e.key==="Enter"){
+                        saveEditedHabit(habit.id,input.value);
+                    }
+                });
+                //save on blur
+                input.addEventListener("blur",()=>{
+                    saveEditedHabit(habit.id,input.value);
+                });
+            });
+
+            
 
             //delete button
 
@@ -110,6 +140,20 @@ document.addEventListener("DOMContentLoaded",()=>{
         renderHabits();
     }
 
+    //add save function
+    function saveEditedHabit(id,newText){
+        const trimmedText=newText.trim();
+        if(trimmedText==="")return;
+
+        habits=habits.map(habit=>
+            habit.id===id
+            ?{...habit,text:trimmedText}
+            :habit
+        );
+        localStorage.setItem("habits",JSON.stringify(habits));
+        renderHabits();
+    }
+
 
 
 
@@ -129,8 +173,20 @@ document.addEventListener("DOMContentLoaded",()=>{
         localStorage.setItem("habits",JSON.stringify(habits));
          // Clear input
         habitInput.value ="";
+        habitInput.focus();
         renderHabits();
     });
+
+    //shortcut- h
+    document.addEventListener("keydown",(e)=>{
+        if(e.target.tagName==="INPUT")return;
+
+        if(e.key.toLowerCase()==="h"){
+            showSection("habits");
+        }
+    });
+
+   
 });
 
 
